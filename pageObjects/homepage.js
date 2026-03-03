@@ -1,21 +1,20 @@
-// homePage.js
 class HomePage {
-    constructor(page) {
-        this.page = page;
-        this.product = page.locator(".product-image-wrapper").first(); // pick first product
-        this.addToCartBtn = page.locator("a[data-product-id]").first();
-        this.cartLink = page.locator("a[href='/view_cart']");
-    }
+  constructor(page) {
+    this.page = page;
+    this.firstAddToCart = page.locator('.product-overlay .add-to-cart').first();
+    this.continueShoppingBtn = page.locator('button:has-text("Continue Shopping")');
+    this.cartLink = page.locator('a[href="/view_cart"]');
+    this.cartItem = page.locator('.cart_description');
+  }
 
-    async addFirstProductToCart() {
-        await this.product.hover();
-        await this.addToCartBtn.click();
-        await this.page.waitForSelector("#cartModal"); // wait for modal
-    }
+  async addFirstProduct() {
+    await this.firstAddToCart.click();
+    await this.continueShoppingBtn.click();
+  }
 
-    async goToCart() {
-        await this.cartLink.click();
-    }
+  async openCart() {
+    await this.cartLink.click();
+  }
 }
 
-module.exports = HomePage;
+module.exports = { ProductsPage };
