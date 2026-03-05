@@ -8,7 +8,7 @@ class LoginPage {
     this.loggedInText = page.locator('a:has-text("Logged in as")');
   }
 
-  async navigate() {
+  async navigateToHome() {
     await this.page.goto('/');
   }
 
@@ -20,6 +20,7 @@ class LoginPage {
     await this.emailInput.fill(email);
     await this.passwordInput.fill(password);
     await this.loginButton.click();
+    await this.page.waitForLoadState('networkidle');
   }
 }
 
