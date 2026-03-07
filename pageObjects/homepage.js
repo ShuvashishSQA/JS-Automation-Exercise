@@ -17,4 +17,4 @@ class HomePage {
   }
 }
 
-module.exports = { ProductsPage };
+module.exports = { HomePage };

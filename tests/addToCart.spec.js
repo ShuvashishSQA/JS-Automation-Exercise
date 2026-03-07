@@ -1,19 +1,24 @@
 const { test, expect } = require('@playwright/test');
-const { LoginPage } = require('../pages/LoginPage');
-const { ProductsPage } = require('../pages/ProductsPage');
+const { LoginPage } = require('../pageObjects/LoginPage');
+const { HomePage } = require('../pageObjects/HomePage');
 const { validUser } = require('../utils/testData');
+
+
+test.describe('Add to Cart', () => {
 
 test('User can add product to cart', async ({ page }) => {
 
   const loginPage = new LoginPage(page);
-  const productsPage = new ProductsPage(page);
+  const homePage = new HomePage(page);
 
-  await loginPage.navigate();
+  await loginPage.navigateToHome();
   await loginPage.openLoginPage();
   await loginPage.login(validUser.email, validUser.password);
 
-  await productsPage.addFirstProduct();
-  await productsPage.openCart();
+  await homePage.addFirstProduct();
+  await homePage.openCart();
 
-  await expect(productsPage.cartItem).toBeVisible();
+  await expect(homePage.cartItem).toBeVisible();
+
+})
 });
