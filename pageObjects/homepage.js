@@ -7,10 +7,19 @@ class HomePage {
     this.cartItem = page.locator('.cart_description');
   }
 
-  async addFirstProduct() {
-    await this.firstAddToCart.click();
-    await this.continueShoppingBtn.click();
-  }
+async addFirstProduct() {
+
+  // ✅ Step 1: hover over the product card to reveal the overlay
+  const firstProduct = this.page.locator('.productinfo').first();
+  await firstProduct.hover();
+
+  // ✅ Step 2: now the Add to Cart button is visible — click it
+  await this.firstAddToCart.click();
+
+  // ✅ Step 3: wait for modal to fully appear before clicking
+  await this.continueShoppingBtn.waitFor({ state: 'visible' });
+  await this.continueShoppingBtn.click();
+}
 
   async openCart() {
     await this.cartLink.click();
