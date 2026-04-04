@@ -11,6 +11,9 @@ module.exports = defineConfig({
     baseURL: process.env.BASE_URL,
     headless: false,           // to make automation visible, true for CI/CD process.
     viewport: null,            // uses fullscreen dynamically
+    launchOptions: {
+      args: ['--start-maximized'] // ✅ forces browser to open fully maximized
+    },
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     trace: 'retain-on-failure', // Lets you replay exactly what happened in a failed test
