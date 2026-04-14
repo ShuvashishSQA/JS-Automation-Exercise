@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
-const { LoginPage } = require('../pageObjects/LoginPage');
-const { HomePage } = require('../pageObjects/HomePage');
+const { LoginPage } = require('../pageObjects/login.page');
+const { HomePage } = require('../pageObjects/homepage');
 const { validUser } = require('../utils/testData');
 
 

@@ -7,6 +7,7 @@ module.exports = defineConfig({
   retries: 1,                  // Retry once on failure (catches flakiness)
   workers: 1,                  // Run One test at a time
   reporter: 'html',            // Generates a beautiful HTML report locally
+
   use: {
     baseURL: process.env.BASE_URL,
     headless: false,           // to make automation visible, true for CI/CD process.
@@ -14,6 +15,7 @@ module.exports = defineConfig({
     launchOptions: {
       args: ['--start-maximized'] // ✅ forces browser to open fully maximized
     },
+    
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     trace: 'retain-on-failure', // Lets you replay exactly what happened in a failed test
