@@ -2,12 +2,12 @@ class signUpPage {
   constructor(page) {
     this.page = page;
 
+    this.signUpTitleText = page.locator('h2:has-text("New User Signup!")');
+
     this.signUpLink = page.locator('a[href="/login"]');
     this.signUpEmailInput = page.locator('input[data-qa="signup-email"]');
     this.signUpNameInput = page.locator('input[data-qa="signup-name"]');
     this.signUpButton = page.locator('button[data-qa="signup-button"]');
-
-    this.loggedInText = page.locator('a:has-text("Logged in as")');
   }
 
   async navigateToHome() {
