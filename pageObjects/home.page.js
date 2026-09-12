@@ -8,7 +8,6 @@ class HomePage {
   }
 
 async addFirstProduct() {
-
   // ✅ Step 1: hover over the product card to reveal the overlay
   const firstProduct = this.page.locator('.productinfo').first();
   await firstProduct.hover();
