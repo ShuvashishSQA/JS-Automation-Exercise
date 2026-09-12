@@ -35,12 +35,12 @@ class SignupDetailsPage {
     this.createAccountBtn = page.locator('button[data-qa="create-account"]');
   }
 
-  // // Verify the page loaded and pre-populated values are correct
-  // async verifyPageAndPrePopulatedValues(expectedName, expectedEmail) {
-  //   await this.accountInfoHeading.waitFor({ state: 'visible' });
-  //   await expect(this.nameInput).toHaveValue(expectedName);
-  //   await expect(this.emailInput).toHaveValue(expectedEmail);
-  // }
+  // Verify the page loaded and pre-populated values are correct
+  async verifyPageAndPrePopulatedValues(expectedName, expectedEmail) {
+    await this.accountInfoHeading.waitFor({ state: 'visible' });
+    await expect(this.nameInput).toHaveValue(expectedName);
+    await expect(this.emailInput).toHaveValue(expectedEmail);
+  }
 
   // Fill all account and address details
   async fillAccountDetails(details) {

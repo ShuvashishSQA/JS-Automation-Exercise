@@ -2,7 +2,9 @@ const { test, expect } = require('@playwright/test');
 const { LoginPage } = require('../pageObjects/login.page');
 const { validUser } = require('../utils/testData');
 
-test.describe('Login',() => {test('User can login with valid credentials', async ({ page }) => {
+test.describe('Login',() => {
+  
+test('User can login with valid credentials', async ({ page }) => {
 
   const loginPage = new LoginPage(page);
 

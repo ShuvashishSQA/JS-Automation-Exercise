@@ -1,6 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const { SignupPage } = require('../pageObjects/signup.page');
 const { SignupDetailsPage } = require('../pageObjects/signupDetails.page');
+const { SignupConfirmPage } = require('../pageObjects/signupConfirm.page');
 const { newUser } = require('../utils/testData');
 
 test.describe('Signup', () => {
@@ -9,11 +10,11 @@ test.describe('Signup', () => {
 
     const signupPage = new SignupPage(page);
     const signupDetailsPage = new SignupDetailsPage(page);
-
+    const signupConfirmPage = new SignupConfirmPage(page);
+    
     // ── Step 1: Navigate and reach signup form
     await signupPage.navigateToHome();
     await signupPage.openSignupPage();
-
 
     // ── Step 2: Enter name and email on signup page
     await signupPage.enterName(newUser.name);
