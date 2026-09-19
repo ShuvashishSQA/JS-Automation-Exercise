@@ -1,3 +1,5 @@
+const { expect } = require('@playwright/test');
+
 class SignupDetailsPage {
   constructor(page) {
     this.page = page;

@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const { LoginPage } = require('../pageObjects/login.page');
 const { HomePage } = require('../pageObjects/home.page');
-const { validUser } = require('../utils/testData');
+const { getLastCreatedUser } = require('../utils/testData');
 
 
 test.describe('Add to Cart', () => {
@@ -10,11 +10,12 @@ test('User can log in', async ({ page }) => {
 
   const loginPage = new LoginPage(page);
   const homePage = new HomePage(page);
-
+  const lastCreatedUser = getLastCreatedUser();
+  
   //Login Flow
   await loginPage.navigateToHome();
   await loginPage.openLoginPage();
-  await loginPage.login(validUser.email, validUser.password);
+  await loginPage.login(lastCreatedUser.email, lastCreatedUser.password);
   await expect(loginPage.loggedInText).toBeVisible();
 
   //Cart flow
