@@ -21,8 +21,12 @@ class SignupPage {
   async signup(name, email) {
     await this.signUpNameInput.fill(name);
     await this.signUpEmailInput.fill(email);
+  }
+
+  async clickSignup() {
     await this.signUpButton.click();
   }
+
 }
 
 module.exports = { SignupPage };
