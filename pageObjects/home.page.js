@@ -3,7 +3,7 @@ class HomePage {
     this.page = page;
     this.firstAddToCart = page.locator('.product-overlay .add-to-cart').first();
     this.continueShoppingBtn = page.locator('button:has-text("Continue Shopping")');
-    this.cartLink = page.locator('a[href="/view_cart"]');
+    this.cartLink = page.getByRole('link', { name: 'View Cart', exact: true });
     this.cartItem = page.locator('.cart_description');
   }
 
@@ -17,7 +17,7 @@ async addFirstProduct() {
 
   // ✅ Step 3: wait for modal to fully appear before clicking
   await this.continueShoppingBtn.waitFor({ state: 'visible' });
-  await this.continueShoppingBtn.click();
+  //await this.continueShoppingBtn.click();
 }
 
   async openCart() {
