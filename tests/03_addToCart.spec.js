@@ -6,24 +6,22 @@ const { getLastCreatedUser } = require('../utils/testData');
 
 test.describe('Add to Cart', () => {
 
-test('User can log in', async ({ page }) => {
-
+test('User can log in and add Item to the Cart', async ({ page }) => {
+  
   const loginPage = new LoginPage(page);
   const homePage = new HomePage(page);
   const lastCreatedUser = getLastCreatedUser();
-  
-  //Login Flow
-  await loginPage.navigateToHome();
-  await loginPage.openLoginPage();
-  await loginPage.login(lastCreatedUser.email, lastCreatedUser.password);
-  await expect(loginPage.loggedInText).toBeVisible();
 
-  //Cart flow
-  await homePage.addFirstProduct();
-  await homePage.openCart();
+    await loginPage.navigateToHome();
+    await loginPage.openLoginPage();
+    await loginPage.login(lastCreatedUser.email, lastCreatedUser.password);
+    await expect(loginPage.loggedInText).toBeVisible();
 
-  await expect(homePage.cartItem).toBeVisible();
 
+//Logged in User can add items to cart
+    await homePage.addFirstProduct();
+    await homePage.openCart();
+    await expect(homePage.cartItem).toBeVisible();
 })
 
 });

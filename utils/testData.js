@@ -1,9 +1,9 @@
 require('dotenv').config();
 
-if (!process.env.EMAIL || !process.env.PASSWORD) {
+if (!process.env.BASE_URL) {
   throw new Error(
-    '❌ Missing EMAIL or PASSWORD in .env file. ' +
-    'Make sure your .env file exists and has both values set.'
+    '❌ Missing BASE_URL in .env file. ' +
+    'Make sure your .env file exists and has the value set.'
   );
 }
 
@@ -13,11 +13,6 @@ const path = require('path');
 const USER_DATA_FILE = path.join(__dirname, 'lastCreatedUser.json');
 
 module.exports = {
-  validUser: {
-    email: process.env.EMAIL,
-    password: process.env.PASSWORD
-  },
-
 // Dynamic user generator function for signup tests
   getNewUserData: () => {
     const timestamp = Date.now();

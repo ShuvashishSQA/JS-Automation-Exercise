@@ -5,6 +5,7 @@ class HomePage {
     this.continueShoppingBtn = page.locator('button:has-text("Continue Shopping")');
     this.cartLink = page.getByRole('link', { name: 'View Cart', exact: true });
     this.cartItem = page.locator('.cart_description');
+    this.productsNavLink = page.locator('a[href="/products"]');
   }
 
 async addFirstProduct() {
@@ -22,6 +23,10 @@ async addFirstProduct() {
 
   async openCart() {
     await this.cartLink.click();
+  }
+
+  async navigateToProducts() {
+    await this.productsNavLink.click();
   }
 }
 
