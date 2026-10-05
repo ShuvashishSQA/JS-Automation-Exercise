@@ -3,6 +3,7 @@ const { LoginPage } = require('../pageObjects/login.page');
 const { HomePage } = require('../pageObjects/home.page');
 const { ProductsPage } = require('../pageObjects/products.page');
 const { ProductDetailsPage } = require('../pageObjects/productDetails.page');
+const { CartPage } = require('../pageObjects/cart.page');
 const { getLastCreatedUser } = require('../utils/testData');
 
 test.describe('Add lowest price T-Shirts and highest price Kidsware to Cart', () => {
@@ -12,6 +13,7 @@ test.describe('Add lowest price T-Shirts and highest price Kidsware to Cart', ()
     const homePage = new HomePage(page);
     const productsPage = new ProductsPage(page);
     const productDetailsPage = new ProductDetailsPage(page);
+    const cartPage = new CartPage(page);
     const lastCreatedUser = getLastCreatedUser();
 
     // --- Log in ---

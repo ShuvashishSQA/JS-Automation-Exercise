@@ -6,6 +6,7 @@ class HomePage {
     this.cartLink = page.getByRole('link', { name: 'View Cart', exact: true });
     this.cartItem = page.locator('.cart_description');
     this.productsNavLink = page.locator('a[href="/products"]');
+    this.cartNavLink = page.locator('a[href="/view_cart"]');
   }
 
 async addFirstProduct() {
