@@ -5,7 +5,7 @@ const { ProductsPage } = require('../pageObjects/products.page');
 const { ProductDetailsPage } = require('../pageObjects/productDetails.page');
 const { CartPage } = require('../pageObjects/cart.page');
 const { CheckOutPage } = require('../pageObjects/checkOut.page');
-const { getLastCreatedUser } = require('../utils/testData/');
+const { getLastCreatedUser } = require('../utils/testData');
 
 test.describe('Proceed to Checkout after adding lowest price T-Shirts and highest price Kidsware to Cart', () => {
 

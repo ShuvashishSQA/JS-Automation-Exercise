@@ -3,21 +3,20 @@ const { defineConfig } = require('@playwright/test');
 
 module.exports = defineConfig({
   testDir: './tests',
-  timeout: 60000,              // Each test gets max 30 seconds
-  retries: 1,                  // Retry once on failure (catches flakiness)
-  workers: 1,                  // Run One test at a time
-  reporter: 'html',            // Generates a beautiful HTML report locally
-
+  timeout: 60_000,
+  expect: { timeout: 7_000 },
+  retries: process.env.CI ? 2 : 0,
+  workers: 1, // raise once tests no longer depend on each other
+  reporter: [['list'], ['html', { open: 'never' }]],
+  
   use: {
     baseURL: process.env.BASE_URL,
-    headless: false,           // to make automation visible, true for CI/CD process.
-    viewport: null,            // uses fullscreen dynamically
-    launchOptions: {
-      args: ['--start-maximized'] // ✅ forces browser to open fully maximized
-    },
-    
+    actionTimeout: 15_000,
+    headless: !!process.env.CI,
+    viewport: process.env.CI ? { width: 1440, height: 900 } : null,
+    launchOptions: { args: process.env.CI ? [] : ['--start-maximized'] },
+    trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
-    trace: 'retain-on-failure', // Lets you replay exactly what happened in a failed test
-  }
+  },
 });

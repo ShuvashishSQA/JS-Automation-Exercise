@@ -22,13 +22,13 @@ async addFirstProduct() {
   //await this.continueShoppingBtn.click();
 }
 
-  async openCart() {
-    await this.cartLink.click();
-  }
+async openCart() {
+  await this.cartLink.click();
+}
 
-  async navigateToProducts() {
-    await this.productsNavLink.click();
-  }
+async navigateToProducts() {
+   await this.productsNavLink.click();
+ }
 }
 
 module.exports = { HomePage };
